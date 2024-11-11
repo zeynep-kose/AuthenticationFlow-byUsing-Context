@@ -20,6 +20,10 @@ const LoginSection = (props: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>({ resolver: yupResolver(validation) });
+
+  const handleLogin = (form: LoginFormInputs) => {
+    loginUser(form.userName, form.password);
+  };
   return (
     <section className="bg-gray-100 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -28,7 +32,10 @@ const LoginSection = (props: Props) => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Sign in to your account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form
+              className="space-y-4 md:space-y-6"
+              onSubmit={handleSubmit(handleLogin)}
+            >
               <div>
                 <label
                   htmlFor="email"

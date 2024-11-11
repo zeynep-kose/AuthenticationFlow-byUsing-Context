@@ -21,6 +21,10 @@ const RegisterSection = (props: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormInputs>({ resolver: yupResolver(validation) });
+
+  const handleRegister = (form: RegisterFormInputs) => {
+    registerUser(form.userName, form.password, form.email);
+  };
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -29,7 +33,10 @@ const RegisterSection = (props: Props) => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Sign Up
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form
+              className="space-y-4 md:space-y-6"
+              onSubmit={handleSubmit(handleRegister)}
+            >
               <div>
                 <label
                   htmlFor="email"

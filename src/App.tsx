@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, BrowserRouter, Outlet } from "react-router-dom";
 import logo from "./logo.svg";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
